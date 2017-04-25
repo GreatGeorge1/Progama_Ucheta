@@ -16,7 +16,26 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
+        }
 
+        //создаем переменные и обьекты необходимые для подключения к базе
+
+        string Server;// IP адрес БД
+        string Database; // Имя БД
+        string UserID;// Имя пользователя БД
+        string Password;// Пароль пользователя БД
+        string CharacterSet;// Кодировка Базы Данных
+        uint Port;// Порт подключения к базе
+        MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder();
+
+        //добавляем данные о таблице
+        TableInfo table1 = new TableInfo("Oblik");
+        string[] table1Cols = { "Id", "PIB", "Date", "CameIn", "ComeOut"};
+        //table1.SetCols(table1Cols);
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+             
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,50 +61,75 @@ namespace WindowsFormsApp1
            //     MessageBox.Show(ex.Message, "Ошибка");
            // }
 
-            dataGridView1.DataSource = GetComments();
+            dataGridView1.DataSource = GetData();//выводим таблицу
             //myConnection.Close();
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void DataConnect()//присваиваем значения для подключения к серверу
         {
+            Server = "db4free.net";// IP адрес БД
+            Database = "oblikvykladachiv"; // Имя БД
+            UserID = "guy123";// Имя пользователя БД
+            Password = "guy123";// Пароль пользователя БД
+            CharacterSet = "cp1251";// Кодировка Базы Данных
+            Port = 3307;// Порт подключения к базе
+
+            mysqlCSB.Server = Server; 
+            mysqlCSB.Database = Database;    
+            mysqlCSB.UserID = UserID;       
+            mysqlCSB.Password = Password;   
+            mysqlCSB.CharacterSet = CharacterSet;
+            mysqlCSB.Port = Port;
+
         }
 
-        DataTable GetComments()
+        DataTable GetData()
         {
-            DataTable dt = new DataTable();
-            MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder();
-            mysqlCSB.Server = "db4free.net";  // IP адрес БД
-            mysqlCSB.Database = "oblikvykladachiv";    // Имя БД
-            mysqlCSB.UserID = "guy123";        // Имя пользователя БД
-            mysqlCSB.Password = "guy123";   // Пароль пользователя БД
-            mysqlCSB.CharacterSet = "cp1251"; // Кодировка Базы Данных
-            mysqlCSB.Port = 3307;
-            string queryString = @"
-            SELECT Id,
-            PIB,Date,CameIn,ComeOut
-            FROM   Oblik;";
-            using (MySqlConnection con = new MySqlConnection())
+            DataTable dataTable = new DataTable();//создаем таблицу чтобы передать ей значения
+
+            DataConnect();//присваиваем значения необходимые для подключения к базе(серверу)
+           
+            table1.SetCols(table1Cols);//добавляем информацию о колнках в таблице
+            var temp = "";
+            for (int i = 0; i < table1.cols.Length; i++)//преобразовуем информацию о колнках в строку
             {
-                con.ConnectionString = mysqlCSB.ConnectionString;
-                MySqlCommand com = new MySqlCommand(queryString, con);
+                var j = ", ";
+                if (i == table1.cols.Length - 1) { j = " "; }
+                temp+= table1.cols[i] + j;
+                
+            }
+
+            //создаем запрос
+            var select = (@"select "+temp+" from "+table1.name); 
+            string queryString =select;
+
+            MessageBox.Show(table1.Print());//сообщение для отладки
+
+            //создаем соединение и получаем значения искомой таблицы
+            using (MySqlConnection myConnection = new MySqlConnection())
+            {
+                myConnection.ConnectionString= mysqlCSB.ConnectionString;
+                MySqlCommand myCommand = new MySqlCommand(queryString, myConnection);
                 try
                 {
-                    con.Open();
-                    using (MySqlDataReader dr = com.ExecuteReader())
+                    myConnection.Open();
+                    using (MySqlDataReader dataReader = myCommand.ExecuteReader())
                     {
-                        if (dr.HasRows)
+                        if (dataReader.HasRows)
                         {
-                            dt.Load(dr);
+                            dataTable.Load(dataReader);
                         }
                     }
+                    myConnection.Close();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            return dt;
+            return dataTable;//получаем готовую таблицу
         }
     }
+   
 }
