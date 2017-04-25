@@ -73,7 +73,7 @@ namespace WindowsFormsApp1
             DataTable dataTable = new DataTable();//создаем таблицу чтобы передать ей значения
             DataConnect();//присваиваем значения необходимые для подключения к базе(серверу)
             var temp = "";
-            for (int i = 0; i < table.cols.Length; i++)//преобразовуем информацию о колнках в строку
+            for (int i = 0; i < table.cols.Length; i++)//преобразовуем информацию о колонках в строку
             {
                 var j = ", ";
                 if (i == table.cols.Length - 1) { j = " "; }

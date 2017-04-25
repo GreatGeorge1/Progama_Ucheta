@@ -10,3 +10,15 @@ C:\Users\egorl\Documents\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Wind
 C:\Users\egorl\Documents\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\egorl\Documents\GitHub\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
 C:\Users\egorl\Documents\GitHub\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.dll
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+E:\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
