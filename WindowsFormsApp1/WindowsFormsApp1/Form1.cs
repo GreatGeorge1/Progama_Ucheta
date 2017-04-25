@@ -18,6 +18,7 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        int tableNo;
         //создаем переменные и обьекты необходимые для подключения к базе
 
         string Server;// IP адрес БД
@@ -30,40 +31,23 @@ namespace WindowsFormsApp1
 
         //добавляем данные о таблице
         TableInfo table1 = new TableInfo("Oblik");
-        string[] table1Cols = { "Id", "PIB", "Date", "CameIn", "ComeOut"};
-        //table1.SetCols(table1Cols);
+        string[] table1Cols = { "Id", "PIB", "Date", "CameIn", "ComeOut" };
+
+        TableInfo table2 = new TableInfo("Vikladachy");
+        string[] table2Cols = { "Id","PIB","Predmet","Kafedra"};
+     
 
         private void Form1_Load(object sender, EventArgs e)
         {
-             
+            //добавляем информацию о колнках в таблице
+            table1.SetCols(table1Cols);
+            table2.SetCols(table2Cols);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-          //  MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder();
-          //  mysqlCSB.Server = "db4free.net";  // IP адоес БД
-          //  mysqlCSB.Database = "oblikvykladachiv";    // Имя БД
-          //  mysqlCSB.UserID = "guy123";        // Имя пользователя БД
-          //  mysqlCSB.Password = "guy123";   // Пароль пользователя БД
-          //  mysqlCSB.CharacterSet = "cp1251"; // Кодировка Базы Данных
-          //  MySqlConnection myConnection = new MySqlConnection(mysqlCSB.ConnectionString);
 
-
-           // try
-           // {
-           //     myConnection.Open(); // Открываем соединение
-           //                          // --- код запроса и т.п. --- //
-            //    MessageBox.Show("Подключение прошло успешно!");
-          //     // myConnection.Close(); // Закрываем соединение
-           // }
-           // catch (Exception ex)
-           // {
-           //     MessageBox.Show(ex.Message, "Ошибка");
-           // }
-
-            dataGridView1.DataSource = GetData();//выводим таблицу
-            //myConnection.Close();
-
+            dataGridView1.DataSource = GetData(table1);//выводим таблицу
         }
 
         private void DataConnect()//присваиваем значения для подключения к серверу
@@ -84,28 +68,22 @@ namespace WindowsFormsApp1
 
         }
 
-        DataTable GetData()
+        DataTable GetData(TableInfo table)
         {
             DataTable dataTable = new DataTable();//создаем таблицу чтобы передать ей значения
-
             DataConnect();//присваиваем значения необходимые для подключения к базе(серверу)
-           
-            table1.SetCols(table1Cols);//добавляем информацию о колнках в таблице
             var temp = "";
-            for (int i = 0; i < table1.cols.Length; i++)//преобразовуем информацию о колнках в строку
+            for (int i = 0; i < table.cols.Length; i++)//преобразовуем информацию о колнках в строку
             {
                 var j = ", ";
-                if (i == table1.cols.Length - 1) { j = " "; }
-                temp+= table1.cols[i] + j;
-                
+                if (i == table.cols.Length - 1) { j = " "; }
+                temp += table.cols[i] + j;
+
             }
-
             //создаем запрос
-            var select = (@"select "+temp+" from "+table1.name); 
+            var select = (@"select " + temp + " from " + table.name);
             string queryString =select;
-
-            MessageBox.Show(table1.Print());//сообщение для отладки
-
+            MessageBox.Show(table.Print());//сообщение для отладки
             //создаем соединение и получаем значения искомой таблицы
             using (MySqlConnection myConnection = new MySqlConnection())
             {
@@ -129,6 +107,18 @@ namespace WindowsFormsApp1
                 }
             }
             return dataTable;//получаем готовую таблицу
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.SelectedItem.ToString() == "table1")
+            {
+                dataGridView1.DataSource = GetData(table1);//выводим таблицу
+            }
+            if (comboBox1.SelectedItem.ToString() == "table2")
+            {
+                dataGridView1.DataSource = GetData(table2);//выводим таблицу
+            }
         }
     }
    
