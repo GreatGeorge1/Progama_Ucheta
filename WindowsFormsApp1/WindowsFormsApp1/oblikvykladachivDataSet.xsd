@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="oblikvykladachivDataSet" targetNamespace="http://tempuri.org/oblikvykladachivDataSet.xsd" xmlns:mstns="http://tempuri.org/oblikvykladachivDataSet.xsd" xmlns="http://tempuri.org/oblikvykladachivDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="oblikvykladachivConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="oblikvykladachivConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.WindowsFormsApp1.Properties.Settings.GlobalReference.Default.oblikvykladachivConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="OblikTableAdapter" GeneratorDataComponentClassName="OblikTableAdapter" Name="Oblik" UserDataComponentName="OblikTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="oblikvykladachivConnectionString (Settings)" DbObjectName="oblikvykladachiv.Oblik" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `PIB`, `Date`, `CameIn`, `ComeOut` FROM `Oblik`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VikladachyTableAdapter" GeneratorDataComponentClassName="VikladachyTableAdapter" Name="Vikladachy" UserDataComponentName="VikladachyTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="oblikvykladachivConnectionString (Settings)" DbObjectName="oblikvykladachiv.Vikladachy" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT `Id`, `PIB`, `Predmet`, `Kafedra` FROM `Vikladachy`</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings />
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="oblikvykladachivDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="oblikvykladachivDataSet" msprop:Generator_UserDSName="oblikvykladachivDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Oblik" msprop:Generator_TableClassName="OblikDataTable" msprop:Generator_TableVarName="tableOblik" msprop:Generator_TablePropName="Oblik" msprop:Generator_RowDeletingName="OblikRowDeleting" msprop:Generator_RowChangingName="OblikRowChanging" msprop:Generator_RowEvHandlerName="OblikRowChangeEventHandler" msprop:Generator_RowDeletedName="OblikRowDeleted" msprop:Generator_UserTableName="Oblik" msprop:Generator_RowChangedName="OblikRowChanged" msprop:Generator_RowEvArgName="OblikRowChangeEvent" msprop:Generator_RowClassName="OblikRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Vikladachy" msprop:Generator_TableClassName="VikladachyDataTable" msprop:Generator_TableVarName="tableVikladachy" msprop:Generator_TablePropName="Vikladachy" msprop:Generator_RowDeletingName="VikladachyRowDeleting" msprop:Generator_RowChangingName="VikladachyRowChanging" msprop:Generator_RowEvHandlerName="VikladachyRowChangeEventHandler" msprop:Generator_RowDeletedName="VikladachyRowDeleted" msprop:Generator_UserTableName="Vikladachy" msprop:Generator_RowChangedName="VikladachyRowChanged" msprop:Generator_RowEvArgName="VikladachyRowChangeEvent" msprop:Generator_RowClassName="VikladachyRow">
+          <xs:complexType>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
