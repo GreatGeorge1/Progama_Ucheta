@@ -18,7 +18,6 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        int tableNo;
         //создаем переменные и обьекты необходимые для подключения к базе
 
         string Server;// IP адрес БД
