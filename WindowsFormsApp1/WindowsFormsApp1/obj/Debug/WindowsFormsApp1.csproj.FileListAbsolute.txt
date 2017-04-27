@@ -56,3 +56,15 @@ F:\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.c
 F:\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 F:\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 F:\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.ValueTuple.dll
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\MySql.Data.xml
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Insert.resources
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\Progama_Ucheta\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.Cache
