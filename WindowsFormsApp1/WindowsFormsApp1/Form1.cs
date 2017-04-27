@@ -18,54 +18,48 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-        int tableNo;
         //создаем переменные и обьекты необходимые для подключения к базе
-
-        string Server;// IP адрес БД
-        string Database; // Имя БД
-        string UserID;// Имя пользователя БД
-        string Password;// Пароль пользователя БД
-        string CharacterSet;// Кодировка Базы Данных
-        uint Port;// Порт подключения к базе
         MySqlConnectionStringBuilder mysqlCSB = new MySqlConnectionStringBuilder();
+        MySqlConnection myConnection = new MySqlConnection();
 
-        //добавляем данные о таблице
-        TableInfo table1 = new TableInfo("Oblik");
-        string[] table1Cols = { "Id", "PIB", "Date", "CameIn", "ComeOut" };
-
-        TableInfo table2 = new TableInfo("Vikladachy");
-        string[] table2Cols = { "Id","PIB","Predmet","Kafedra"};
-     
-
+        //добавляем данные о таблице name , cols
+        TableInfo oblik = new TableInfo("Oblik","Id,PIB,Date,CameIn,ComeOut");
+        TableInfo vikladachy = new TableInfo("Vikladachy","Id,PIB,Predmet,Kafedra");
+        TableInfo oblikStudent = new TableInfo("Oblik_Student","PIB,_Group,SubGr,Predmet,Vykladach,Time,Data");
+        TableInfo rozklad = new TableInfo("Rozklad","Kafedra,Predmet,Time,_Group,SubGr,Vykladach");
+        TableInfo studenty=new TableInfo("Studenty","Id,PIB,_Group,SubGr,Kafedra,Telephone");
+        
+        private void Add_Tables()
+        {
+            //MessageBox.Show(TableInfo.count.ToString());
+            string[] print = new string[TableInfo.count];
+            for (int i = 0; i < TableInfo.count; i++)
+            {
+                print[i] =TableInfo.tables[i].name;
+            }
+            string[] arr= print;
+            for (int i=0;i<arr.Length;i++) { }
+            tableSelect.Items.AddRange(arr);
+        }
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             //добавляем информацию о колнках в таблице
-            table1.SetCols(table1Cols);
-            table2.SetCols(table2Cols);
+            Add_Tables();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-            dataGridView1.DataSource = GetData(table1);//выводим таблицу
-        }
-
-        private void DataConnect()//присваиваем значения для подключения к серверу
-        {
-            Server = "db4free.net";// IP адрес БД
-            Database = "oblikvykladachiv"; // Имя БД
-            UserID = "guy123";// Имя пользователя БД
-            Password = "guy123";// Пароль пользователя БД
-            CharacterSet = "cp1251";// Кодировка Базы Данных
-            Port = 3307;// Порт подключения к базе
-
-            mysqlCSB.Server = Server; 
-            mysqlCSB.Database = Database;    
-            mysqlCSB.UserID = UserID;       
-            mysqlCSB.Password = Password;   
-            mysqlCSB.CharacterSet = CharacterSet;
-            mysqlCSB.Port = Port;
-
+        public void DataConnect()//присваиваем значения для подключения к серверу
+        { 
+            DbaseInfo dbase = new DbaseInfo("db4free.net", "oblikvykladachiv", "guy123", "guy123","cp1251",3307);
+            //string server, string db, string user, string pass, uint port, string charset      
+            dbase.AddTables(TableInfo.tables);
+            //MessageBox.Show(dbase.Print());
+            mysqlCSB.Server = dbase.Server; 
+            mysqlCSB.Database = dbase.Database;    
+            mysqlCSB.UserID = dbase.UserID;       
+            mysqlCSB.Password = dbase.Password;   
+            mysqlCSB.CharacterSet = dbase.CharacterSet;
+            mysqlCSB.Port = dbase.Port;
         }
 
         DataTable GetData(TableInfo table)
@@ -73,22 +67,21 @@ namespace WindowsFormsApp1
             DataTable dataTable = new DataTable();//создаем таблицу чтобы передать ей значения
             DataConnect();//присваиваем значения необходимые для подключения к базе(серверу)
             var temp = "";
-            for (int i = 0; i < table.cols.Length; i++)//преобразовуем информацию о колнках в строку
+            for (int i = 0; i < table.cols.Length; i++)//преобразовуем информацию о колонках в строку
             {
                 var j = ", ";
                 if (i == table.cols.Length - 1) { j = " "; }
                 temp += table.cols[i] + j;
-
             }
             //создаем запрос
-            var select = (@"select " + temp + " from " + table.name);
+            string select = (@"select " + temp + " from " + table.name);
             string queryString =select;
-            MessageBox.Show(table.Print());//сообщение для отладки
+            //MessageBox.Show(table.Print());//сообщение для отладки
             //создаем соединение и получаем значения искомой таблицы
-            using (MySqlConnection myConnection = new MySqlConnection())
+            using (myConnection)
             {
-                myConnection.ConnectionString= mysqlCSB.ConnectionString;
-                MySqlCommand myCommand = new MySqlCommand(queryString, myConnection);
+               myConnection.ConnectionString= mysqlCSB.ConnectionString;
+               MySqlCommand myCommand = new MySqlCommand(queryString, myConnection);
                 try
                 {
                     myConnection.Open();
@@ -109,16 +102,22 @@ namespace WindowsFormsApp1
             return dataTable;//получаем готовую таблицу
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void tableSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem.ToString() == "table1")
+            int count = tableSelect.Items.Count;
+            for (int i = 0; i < count; i++)
             {
-                dataGridView1.DataSource = GetData(table1);//выводим таблицу
+                if (tableSelect.SelectedItem.ToString() == tableSelect.Items[i].ToString())
+                {
+                    dataGridView1.DataSource = GetData(TableInfo.tables[i]);
+                }
             }
-            if (comboBox1.SelectedItem.ToString() == "table2")
-            {
-                dataGridView1.DataSource = GetData(table2);//выводим таблицу
-            }
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            dataGridView1.Width = Convert.ToInt32(this.Width*1);
+            dataGridView1.Height = Convert.ToInt32(this.Height*0.8);
         }
     }
    

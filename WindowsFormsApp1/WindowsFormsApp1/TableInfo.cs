@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 
 namespace WindowsFormsApp1
 {
@@ -11,15 +12,32 @@ namespace WindowsFormsApp1
     {
         public string name;
         public string[] cols;
-
+        public static int count=0;
+        public static TableInfo[] tables=new TableInfo[100]; //кол-во макс таблиц
+       
         public TableInfo()
         {
             name = "unknown";
+            cols = new string[] { "unknown" };
+            tables[count] = this;
+            count++;   
         }
 
         public TableInfo(string name)
         {
             this.name = name;
+            cols = new string[] { "unknown" };
+            tables[count] = this;
+            count++;
+        }
+
+        public TableInfo(string name,string cols)
+        {
+            this.name = name;
+            char[] sepchars = {','};
+            this.cols = cols.Split(sepchars,StringSplitOptions.RemoveEmptyEntries);
+            tables[count] = this;
+            count++;
         }
 
         public void SetName(string name)
@@ -27,9 +45,10 @@ namespace WindowsFormsApp1
             this.name = name;
         }
 
-        public void SetCols(string[] cols)
+        public void SetCols(string cols)
         {
-            this.cols = cols;
+            char[] sepchars = { ',' };
+            this.cols = cols.Split(sepchars, StringSplitOptions.RemoveEmptyEntries);
         }
 
         public string Print()
