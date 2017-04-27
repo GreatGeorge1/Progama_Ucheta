@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbaseInfo.cs" />
     <Compile Include="TableInfo.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
