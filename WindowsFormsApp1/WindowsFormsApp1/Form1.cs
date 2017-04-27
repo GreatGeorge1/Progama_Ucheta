@@ -26,13 +26,30 @@ namespace WindowsFormsApp1
 
         private void tableSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TableInfo.AddToControls(tableSelect,dataGridView1);
+            TableInfo.AddToControls(tableSelect,dataGridView1,textBox1);  
         }
 
         private void Form1_ResizeEnd(object sender, EventArgs e)
         {
             dataGridView1.Width = Convert.ToInt32(this.Width*1);
             dataGridView1.Height = Convert.ToInt32(this.Height*0.8);
+        }
+
+        private void Form1_ResizeBegin(object sender, EventArgs e)
+        {
+            dataGridView1.Width = Convert.ToInt32(this.Width * 1);
+            dataGridView1.Height = Convert.ToInt32(this.Height * 0.8);
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            dataGridView1.Width = Convert.ToInt32(this.Width * 1);
+            dataGridView1.Height = Convert.ToInt32(this.Height * 0.8);
+        }
+
+        private void search_Click(object sender, EventArgs e)
+        {
+            TableInfo.AddToControls(tableSelect, dataGridView1, textBox1, search);
         }
     }
    

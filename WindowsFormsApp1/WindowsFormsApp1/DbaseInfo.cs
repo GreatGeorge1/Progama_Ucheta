@@ -28,26 +28,26 @@ namespace WindowsFormsApp1
 
         public DbaseInfo()
         {
-            this.Server = "Server";
-            this.Database = "Database";
-            this.UserID = "UserID";
-            this.Password = "Password";
+            Server = "Server";
+            Database = "Database";
+            UserID = "UserID";
+            Password = "Password";
         }
         public DbaseInfo(string server, string db, string user, string pass)
         {
-            this.Server = server;
-            this.Database = db;
-            this.UserID = user;
-            this.Password = pass;
+            Server = server;
+            Database = db;
+            UserID = user;
+            Password = pass;
         }
         public DbaseInfo(string server, string db, string user, string pass, string charset,uint port)
         {
-            this.Server = server;
-            this.Database = db;
-            this.UserID = user;
-            this.Password = pass;
-            this.Port = port;
-            this.CharacterSet = charset;
+            Server = server;
+            Database = db;
+            UserID = user;
+            Password = pass;
+            Port = port;
+            CharacterSet = charset;
         }
         public void AddTables(TableInfo[] tables)
         {
@@ -60,7 +60,6 @@ namespace WindowsFormsApp1
             {
                 if (element != null) // Avoid NullReferenceException
                 {
-                    
                     print +=element.name+" ";
                 }
             }
@@ -117,6 +116,50 @@ namespace WindowsFormsApp1
                 }
             }
             return dataTable;//получаем готовую таблицу
+        }
+
+        public DataTable GetData(TableInfo table, TextBox textbox)
+        {
+            DataTable dataTable = new DataTable();
+            AddTables(TableInfo.tables);
+            var temp = "";
+            string cols = textbox.Text;
+            char[] sepchars = { ',' };
+            string[] newcols = cols.Split(sepchars, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < newcols.Length; i++)
+            {
+                var k = ", ";
+                if (i == newcols.Length - 1) { k = " "; }
+                temp += newcols[i]+k;
+            }
+
+            string selectByCols = (@"select " + temp + " from " + table.name);
+            string queryString = selectByCols;
+            //MessageBox.Show(table.Print());//сообщение для отладки
+            //создаем соединение и получаем значения искомой таблицы
+            using (myConnection)
+            {
+                myConnection.ConnectionString = dbase.DataConnect().ConnectionString;
+                myCommand.CommandText = queryString;
+                myCommand.Connection = myConnection;
+                try
+                {
+                    myConnection.Open();
+                    using (MySqlDataReader dataReader = myCommand.ExecuteReader())
+                    {
+                        if (dataReader.HasRows)
+                        {
+                            dataTable.Load(dataReader);
+                        }
+                    }
+                    myConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return dataTable;
+            }
         }
     }
 }

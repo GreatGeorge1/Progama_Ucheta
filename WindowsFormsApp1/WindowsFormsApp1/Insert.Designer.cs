@@ -31,6 +31,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.факультетToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фепToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,21 +47,22 @@
             this.пToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.кафедраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.інформаційнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.економічнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добришинToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.килимникToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.полєтаєвToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.економічнаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.чупісToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.калініченкоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Controls.Add(this.dataGridView2);
             this.flowLayoutPanel1.Controls.Add(this.dataGridView1);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.button2);
@@ -67,26 +70,44 @@
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(617, 315);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(627, 403);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 236);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(361, 205);
+            this.dataGridView1.Size = new System.Drawing.Size(583, 99);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(370, 3);
+            this.button1.Location = new System.Drawing.Point(3, 341);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Друк";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(84, 341);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Заміна";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(165, 341);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Вийти";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
@@ -95,7 +116,7 @@
             this.пToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(617, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(627, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -122,7 +143,7 @@
             this.рПЗToolStripMenuItem,
             this.оПСІКToolStripMenuItem});
             this.групаToolStripMenuItem.Name = "групаToolStripMenuItem";
-            this.групаToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.групаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.групаToolStripMenuItem.Text = "Група";
             // 
             // рПЗToolStripMenuItem
@@ -131,7 +152,7 @@
             this.рПЗ1ToolStripMenuItem,
             this.рПЗ2ToolStripMenuItem});
             this.рПЗToolStripMenuItem.Name = "рПЗToolStripMenuItem";
-            this.рПЗToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.рПЗToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.рПЗToolStripMenuItem.Text = "РПЗ";
             // 
             // рПЗ1ToolStripMenuItem
@@ -140,7 +161,7 @@
             this.предметиToolStripMenuItem,
             this.студентиToolStripMenuItem});
             this.рПЗ1ToolStripMenuItem.Name = "рПЗ1ToolStripMenuItem";
-            this.рПЗ1ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.рПЗ1ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.рПЗ1ToolStripMenuItem.Text = "РПЗ1";
             // 
             // предметиToolStripMenuItem
@@ -158,13 +179,13 @@
             // рПЗ2ToolStripMenuItem
             // 
             this.рПЗ2ToolStripMenuItem.Name = "рПЗ2ToolStripMenuItem";
-            this.рПЗ2ToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.рПЗ2ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.рПЗ2ToolStripMenuItem.Text = "РПЗ2";
             // 
             // оПСІКToolStripMenuItem
             // 
             this.оПСІКToolStripMenuItem.Name = "оПСІКToolStripMenuItem";
-            this.оПСІКToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.оПСІКToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.оПСІКToolStripMenuItem.Text = "ОПСІК";
             // 
             // нНИИКТToolStripMenuItem
@@ -200,15 +221,6 @@
             this.інформаційнаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.інформаційнаToolStripMenuItem.Text = "Інформаційна";
             // 
-            // економічнаToolStripMenuItem
-            // 
-            this.економічнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.чупісToolStripMenuItem,
-            this.калініченкоToolStripMenuItem});
-            this.економічнаToolStripMenuItem.Name = "економічнаToolStripMenuItem";
-            this.економічнаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.економічнаToolStripMenuItem.Text = "Економічна";
-            // 
             // добришинToolStripMenuItem
             // 
             this.добришинToolStripMenuItem.Name = "добришинToolStripMenuItem";
@@ -227,41 +239,40 @@
             this.полєтаєвToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.полєтаєвToolStripMenuItem.Text = "Полєтаєв";
             // 
+            // економічнаToolStripMenuItem
+            // 
+            this.економічнаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.чупісToolStripMenuItem,
+            this.калініченкоToolStripMenuItem});
+            this.економічнаToolStripMenuItem.Name = "економічнаToolStripMenuItem";
+            this.економічнаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.економічнаToolStripMenuItem.Text = "Економічна";
+            // 
             // чупісToolStripMenuItem
             // 
             this.чупісToolStripMenuItem.Name = "чупісToolStripMenuItem";
-            this.чупісToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.чупісToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.чупісToolStripMenuItem.Text = "Чупіс";
             // 
             // калініченкоToolStripMenuItem
             // 
             this.калініченкоToolStripMenuItem.Name = "калініченкоToolStripMenuItem";
-            this.калініченкоToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.калініченкоToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.калініченкоToolStripMenuItem.Text = "Калініченко";
             // 
-            // button2
+            // dataGridView2
             // 
-            this.button2.Location = new System.Drawing.Point(451, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Заміна";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(532, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Вийти";
-            this.button3.UseVisualStyleBackColor = true;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(583, 227);
+            this.dataGridView2.TabIndex = 4;
             // 
             // Insert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(617, 339);
+            this.ClientSize = new System.Drawing.Size(627, 427);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Insert";
@@ -270,6 +281,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -302,5 +314,6 @@
         private System.Windows.Forms.ToolStripMenuItem економічнаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem чупісToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem калініченкоToolStripMenuItem;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

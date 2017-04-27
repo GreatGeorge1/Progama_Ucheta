@@ -59,16 +59,37 @@ namespace WindowsFormsApp1
         static public string[] Add_Tables()
         {
             //MessageBox.Show(TableInfo.count.ToString());
-            string[] print = new string[TableInfo.count];
-            for (int i = 0; i < TableInfo.count; i++)
+            string[] print = new string[count];
+            for (int i = 0; i < count; i++)
             {
-                print[i] = TableInfo.tables[i].name;
+                print[i] = tables[i].name;
             }
             string[] arr = print;
             return arr;
             //tableSelect.Items.AddRange(arr);
         }
-        static public void AddToControls(ComboBox combobox,DataGridView datagrid)
+        static public void AddToControls(ComboBox combobox,DataGridView datagrid,TextBox textbox)
+        {
+            //combobox.Items.AddRange(Add_Tables());
+            int count = combobox.Items.Count;
+            string print = "";
+            for (int i = 0; i < count; i++)
+            {
+                if (combobox.SelectedItem.ToString() == combobox.Items[i].ToString())
+                {
+                    datagrid.DataSource = DbaseInfo.dbase.GetData(tables[i]);
+                    textbox.Text = string.Empty;
+                    for(int j=0;j<tables[i].cols.Length;j++)
+                    {
+                        var k = ", ";
+                        if (j == tables[i].cols.Length - 1){ k = ""; }                        
+                        print +=  tables[i].cols[j] + k;
+                    }
+                    textbox.Text = print;
+                }
+            }
+        }
+        static public void AddToControls(ComboBox combobox, DataGridView datagrid, TextBox textbox,Button button)
         {
             //combobox.Items.AddRange(Add_Tables());
             int count = combobox.Items.Count;
@@ -76,20 +97,20 @@ namespace WindowsFormsApp1
             {
                 if (combobox.SelectedItem.ToString() == combobox.Items[i].ToString())
                 {
-                    datagrid.DataSource = DbaseInfo.dbase.GetData(TableInfo.tables[i]); 
+                    datagrid.DataSource = DbaseInfo.dbase.GetData(tables[i],textbox);
                 }
             }
         }
         public string Print()
         {
             var temp = "";
-            for (int i = 0; i < this.cols.Length; i++)
+            for (int i = 0; i < cols.Length; i++)
             {
                 var j = ", ";
-                if (i == this.cols.Length - 1) { j = " "; }
-                temp += this.cols[i] + j;
+                if (i == cols.Length - 1) { j = " "; }
+                temp += cols[i] + j;
             }
-            var print ="Name:"+this.name+"; Cols:"+temp;
+            var print ="Name:"+name+"; Cols:"+temp;
             return print;
         }
     }
